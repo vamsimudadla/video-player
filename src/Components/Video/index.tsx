@@ -154,8 +154,8 @@ class Video extends React.Component<VideoProps, VideoState> {
           data-setup='{}'
         >
           <source
-            src='https://vedavidh-testing.s3.ap-south-1.amazonaws.com/streaming/hd-video/bbb_sunflower_2160p_60fps_normal.mp4'
-            type='video/mp4'
+            src='http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8'
+            type='application/x-mpegURL'
           />
         </StyledVideo>
         {!isPlaying && (

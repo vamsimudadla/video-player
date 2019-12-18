@@ -1,0 +1,31 @@
+.custom-marker {
+   width: 10px !important;
+   height: 10px;
+   border-radius: 50% !important;
+   background-color: white !important;
+   color: black;
+}
+
+.vjs-marker {
+   bottom: -2px;
+}
+
+.vjs-marker:hover {
+   transform: none;
+}
+
+.video-js {
+   counter-reset: marker;
+}
+
+div.custom-marker::before {
+   counter-increment: marker;
+   content: counter(marker);
+
+   font-size: 8px;
+   font-weight: bold;
+
+   position: absolute;
+   left: 2.5px;
+   top: 2px;
+}

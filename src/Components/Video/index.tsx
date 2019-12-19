@@ -29,7 +29,13 @@ class Video extends React.Component {
       videoJS.log('Your player is ready!');
     });
 
-    this.videoPlayer.currentTime(60);
+    this.videoPlayer.on('canplay', this.playVideo);
+  };
+
+  playVideo = () => {
+    if (this.videoPlayer.currentTime() !== 60) {
+      this.videoPlayer.currentTime(60);
+    }
   };
 
   render() {

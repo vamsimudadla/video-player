@@ -4,12 +4,16 @@ import './App.css';
 
 import Video from './Components/Video';
 
-const App: React.FC = () => {
-  return (
-    <div className='App'>
-      <Video />
-    </div>
-  );
-};
+class App extends React.Component {
+  videoRef: any = React.createRef();
+
+  canPlay = () => {
+    this.videoRef.current.changeCurrentTime(60);
+  };
+
+  render() {
+    return <Video ref={this.videoRef} canPlay={this.canPlay} />;
+  }
+}
 
 export default App;

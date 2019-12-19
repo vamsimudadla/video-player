@@ -9,8 +9,14 @@ import videoConfig from './config';
 import './video-overridden.css';
 import './vjs-markers.css';
 
-class Video extends React.Component {
+interface Props {
+  canPlay: () => void;
+}
+
+class Video extends React.Component<Props> {
   videoPlayer: any;
+
+  canBePlayed: boolean = true;
 
   componentDidMount() {
     this.setupVideoPlayer();
@@ -32,9 +38,15 @@ class Video extends React.Component {
     this.videoPlayer.on('canplay', this.playVideo);
   };
 
+  changeCurrentTime = (timeInSec: number) => {
+    this.videoPlayer.currentTime(timeInSec);
+  };
+
   playVideo = () => {
-    if (this.videoPlayer.currentTime() !== 60) {
-      this.videoPlayer.currentTime(60);
+    if (this.canBePlayed) {
+      // this.videoPlayer.currentTime(60) By trigger this in canplay event, it is working but not working in the below way in mobiles
+      this.props.canPlay();
+      this.canBePlayed = false;
     }
   };
 
